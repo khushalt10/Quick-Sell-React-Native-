@@ -3,6 +3,8 @@ import { FlatList, Platform, SafeAreaView, StatusBar, StyleSheet, Text, View } f
 import ListItem from '../components/ListItem'
 import Constants from 'expo-constants'
 import Screen from '../components/Screen'
+import ListItemSeparator from '../components/ListItemSeparator'
+import ListItemDeleteAction from '../components/ListItemDeleteAction'
 
 const messages = [
     {
@@ -23,9 +25,17 @@ export default function MessagesScreen() {
     return (
         <Screen> 
             <FlatList
-                 data={messages}
-                 keyExtractor={message => message.id.toString()}
-                 renderItem={({item}) => <ListItem title={item.title} subtitle={item.description} image={item.image} />}
+                data={messages}
+                keyExtractor={message => message.id.toString()}
+                renderItem={({item}) =>
+                    <ListItem
+                        title={item.title}
+                        subtitle={item.description}
+                        image={item.image}
+                        onPress={() => console.log("Message selected", item)}
+                        renderRightActions={ListItemDeleteAction}
+                    />}
+                ItemSeparatorComponent={ListItemSeparator}
             />
         </Screen>
     )
