@@ -13,7 +13,7 @@ const listings = [
         image: require('../assets/jacket.jpg')
     },
     {
-        id: 1,
+        id: 2,
         title: "Sofa kum Couch JetSpring",
         price: 250,
         image: require('../assets/couch.jpg')
