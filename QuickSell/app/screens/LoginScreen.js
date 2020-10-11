@@ -1,12 +1,9 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import AppButton from '../components/AppButton'
-import AppTextInput from '../components/AppTextInput'
 import Screen from '../components/Screen'
-import { Formik } from 'formik'
 import * as Yup from 'yup'
-import AppText from '../components/AppText'
-import ErrorMessage from '../components/ErrorMessage'
+import { AppForm, AppFormField, ErrorMessage, SubmitButton } from '../components/forms'
+
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -18,42 +15,34 @@ export default function LoginScreen() {
         <Screen style={styles.container}>
             <Image style={styles.logo} source={require('../assets/logo-red.png')} />
             
-            <Formik
+            <AppForm
                 initialValues={{email: '', password: ''}}
                 onSubmit={values => console.log(values)}
                 validationSchema={validationSchema}
             >
-                { ({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
-                    <>
-             <AppTextInput 
+            <AppFormField 
                 icon="email"
                 autoCapitalize="none"
+                name="email"
                 autoCorrect={false}
                 placeholder="Email"
                 keyboardType="email-address"
-                onChangeText={handleChange("email")}
                 textContentType="emailAddress"
-                onBlur={() => setFieldTouched("email")}
             />
-            <ErrorMessage error={errors.email} visible={touched.emai} />
-            <AppTextInput 
+
+            <AppFormField 
                 autoCapitalize="none"
                 autoCorrect={false}
-                icon="lock"
+                icon="lock" 
+                name="password"
                 placeholder="Password"
                 secureTextEntry
                 textContentType="password"
-                onChangeText={handleChange("password")}
-                onBlur={() => setFieldTouched("password")}
             />
-            <ErrorMessage error={errors.password} visible={touched.password} />
-            <AppButton 
+            <SubmitButton 
                 title="Login"
-                onPress={handleSubmit}
-            />                   
-                    </>
-                ) }
-            </Formik>
+            />   
+            </AppForm>
             
 
         </Screen>
