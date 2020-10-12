@@ -6,16 +6,16 @@ import AppText from './AppText'
 import Screen from './Screen'
 import PickerItem from './PickerItem'
 
-export default function AppPicker({icon, items,onSelectItem, placeholder, selectedItem, ...otherProps}) {
+export default function AppPicker({icon,numberOfColumns = 1, PickerItemComponent = PickerItem, items,onSelectItem, width = '100%', placeholder, selectedItem, ...otherProps}) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                <View style={styles.container}>
+                <View style={[styles.container], {width}}>
                     {icon && <MaterialCommunityIcons name={icon} size={20} color={defaultStyles.colors.dark} style={styles.icon} />}
                     <TextInput {...otherProps} style={defaultStyles.text} />
-                    {selectedItem ? <AppText style={styles.text}>{selectedItem.lable}</AppText> : <AppText style={styles.placeholder}>{placeholder}</AppText>}
+                    {selectedItem ? <AppText style={styles.text}>{selectedItem.label}</AppText> : <AppText style={styles.placeholder}>{placeholder}</AppText>}
 
                     <MaterialCommunityIcons name="chevron-down" size={20} color={defaultStyles.colors.dark} />
                 </View>
@@ -25,9 +25,11 @@ export default function AppPicker({icon, items,onSelectItem, placeholder, select
                     <Button title="Close" onPress={() => setModalVisible(false)} />
                     <FlatList 
                         data={items}
+                        numColumns={numberOfColumns}
                         keyExtractor={item => item.value.toString()}
                         renderItem={({ item }) => 
-                            <PickerItem 
+                            <PickerItemComponent
+                                item={item}
                                 label={item.label}
                                 onPress={() => {
                                     setModalVisible(false)
@@ -47,7 +49,6 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.colors.lightgray,
         borderRadius: 25,
         flexDirection: "row",
-        width: '100%',
         padding: 15,
         marginVertical: 10
     },
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
         paddingTop: 4
     },
     placeholder: {
-        colors: defaultStyles.colors.medium,
+        color: defaultStyles.colors.medium,
         flex: 1
     },
     text: {
