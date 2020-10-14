@@ -21,38 +21,14 @@ import ListingEditScreen from './app/screens/ListingEditScreen';
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
 import ImageInput from './app/components/ImageInput';
+import ImageInputList from './app/components/ImageInputList';
 
 
 export default function App() {
-  const [imageUri, setImageUri] = useState()
 
-  const requestPermissions = async() => {
-    const result = await Permissions.askAsync(Permissions.CAMERA_ROLL, Permissions.LOCATION)
-    const {granted} =  await ImagePicker.requestCameraPermissionsAsync()
-    if (!granted)
-      alert('You need to enable permission to access library')
-  }
-
-  useEffect(async () => {
-    requestPermissions()
-  }, [])
-
-  const selectImage = async() => {
-    try {      
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if(!result.cancelled)
-        setImageUri(result.uri)
-    } catch (error) {
-      console.log('Error is ', error)
-    }
-  }
 
 return (
-      <Screen>
-          <Button title="Select Image" onPress={selectImage} />
-          <Image source={{uri: imageUri }} style={{width: 200, height: 200}} />
-          <ImageInput imageUri={imageUri} />
-      </Screen>
+      <ListingEditScreen />
   );
 }
 
