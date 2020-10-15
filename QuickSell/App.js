@@ -25,6 +25,7 @@ import ImageInputList from './app/components/ImageInputList';
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, useNavigation } from '@react-navigation/native' 
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 const Link = () => {
   const navigation = useNavigation()
@@ -84,7 +85,7 @@ const TabNavigator = () => (
 export default function App() {
 return (
       <NavigationContainer>
-        <TabNavigator />
+        <AuthNavigator />
       </NavigationContainer>
   );
 }
