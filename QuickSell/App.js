@@ -46,7 +46,7 @@ export default function App() {
   demo()
   
 
-  return (<View><Text>hello</Text></View>);
+  return (<ListingsScreen />);
 
 }
 
