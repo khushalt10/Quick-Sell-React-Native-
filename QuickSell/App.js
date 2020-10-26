@@ -30,6 +30,7 @@ import myTheme from './app/navigation/navigationTheme';
 import AppNavigator from './app/navigation/AppNavigator';
 import NetInfo, {useNetInfo} from '@react-native-community/netinfo'
 import AsyncStorage from '@react-native-community/async-storage';
+import OfflineNotice from './app/components/OfflineNotice';
 
 export default function App() {
   const demo = async() => {
@@ -46,7 +47,14 @@ export default function App() {
   demo()
   
 
-  return (<ListingsScreen />);
+  return (
+    <>
+      <OfflineNotice />
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </>
+  );
 
 }
 
