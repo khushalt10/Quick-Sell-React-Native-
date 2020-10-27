@@ -3,8 +3,8 @@ import { StyleSheet, View, FlatList } from "react-native";
 
 import { ListItem, ListItemSeparator } from "../components/lists";
 import colors from "../config/colors";
-import routes from '../navigation/routes'
 import Icon from "../components/Icon";
+import routes from "../navigation/routes";
 import Screen from "../components/Screen";
 
 const menuItems = [
@@ -25,14 +25,14 @@ const menuItems = [
   },
 ];
 
-function AccountScreen({navigation}) {
+function AccountScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Khushal Thepane"
-          subTitle="khushalthepane2000@gmail.com"
-          image={require("../assets/sea.jpg")}
+          title="Mosh Hamedani"
+          subTitle="programmingwithmosh@gmail.com"
+          image={require("../assets/mosh.jpg")}
         />
       </View>
       <View style={styles.container}>
