@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import * as Yup from 'yup'
+import * as Yup from "yup";
+
 import {
   Form,
   FormField,
@@ -17,7 +18,7 @@ const validationSchema = Yup.object().shape({
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
-  images: Yup.array().required().min(1, "Please select at least 1 Image")
+  images: Yup.array().min(1, "Please select at least one image."),
 });
 
 const categories = [
@@ -78,7 +79,7 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-const location = useLocation();
+  const location = useLocation();
 
   return (
     <Screen style={styles.container}>
@@ -88,7 +89,7 @@ const location = useLocation();
           price: "",
           description: "",
           category: null,
-          images: []
+          images: [],
         }}
         onSubmit={(values) => console.log(location)}
         validationSchema={validationSchema}

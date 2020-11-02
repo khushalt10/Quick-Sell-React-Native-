@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
-import routes from '../navigation/routes'
 import Card from "../components/Card";
-import listingApi from '../api/listings' 
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 import Screen from "../components/Screen";
+import listingsApi from '../api/listings'
+import { useEffect } from "react";
 
 
-function ListingsScreen({navigation}) {
-  const [listings, setListings] = useState([]);
+function ListingsScreen({ navigation }) {
+  const [listings,setListings] = useState([]);
 
   useEffect(() => {
     loadListings();
   },[])
 
   const loadListings = async() => {
-    const res = await listingApi.getListings()
+    const res = await listingsApi.getListings();
     setListings(res.data)
   }
 
