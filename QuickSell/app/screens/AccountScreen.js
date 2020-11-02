@@ -30,9 +30,9 @@ function AccountScreen({ navigation }) {
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Mosh Hamedani"
-          subTitle="programmingwithmosh@gmail.com"
-          image={require("../assets/mosh.jpg")}
+          title="Khushal Thepane"
+          subTitle="khuhsalthepane2000@gmail.com"
+          image={require("../assets/sea.jpg")}
         />
       </View>
       <View style={styles.container}>
