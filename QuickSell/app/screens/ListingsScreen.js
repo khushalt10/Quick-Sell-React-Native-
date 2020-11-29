@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../config/colors";
@@ -9,18 +9,23 @@ import listingsApi from '../api/listings'
 import { useEffect } from "react";
 import AppText from "../components/Text";
 import Button from "../components/Button";
+import { color } from "react-native-reanimated";
 
 function ListingsScreen({ navigation }) {
 
   const [listings,setListings] = useState([]);
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     loadListings();
   },[])
 
   const loadListings = async() => {
+    setLoading(true)
     const res = await listingsApi.getListings();
+    setLoading(false)
+    
     if (!res.ok) return setError(true)
 
     setError(false)
@@ -34,6 +39,7 @@ function ListingsScreen({ navigation }) {
           <Button title="Retry" onPress={loadListings} />
         </>
       }
+      <ActivityIndicator color={colors.medium} animating={true} size="large" />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
