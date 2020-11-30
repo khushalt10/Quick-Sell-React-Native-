@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "QuickSell",
-    "slug": "QuickSell",
+    "name": "DoneWithIt",
+    "slug": "DoneWithIt",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
