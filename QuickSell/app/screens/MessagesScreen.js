@@ -11,13 +11,13 @@ import {
 const initialMessages = [
   {
     id: 1,
-    title: "Khushal Thepane",
+    title: "Thepane Khsuhal",
     description: "Hey! Is this item still available?",
     image: require("../assets/sea.jpg"),
   },
   {
     id: 2,
-    title: "Thepane Khsuhal",
+    title: "Khushal Thepane",
     description:
       "I'm interested in this item. When will you be able to post it?",
     image: require("../assets/blazer.jpg"),
@@ -57,7 +57,7 @@ function MessagesScreen(props) {
               id: 2,
               title: "T2",
               description: "D2",
-              image: require("../assets/blazer.jpg"),
+              image: require("../assets/mosh.jpg"),
             },
           ]);
         }}
