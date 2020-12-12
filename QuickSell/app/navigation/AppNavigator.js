@@ -5,6 +5,7 @@ import { Notifications } from 'expo'
 import * as Permissions from 'expo-permissions'
 
 import AccountNavigator from "./AccountNavigator";
+import expoPushTokensApi from '../api/expoPushTokens'
 import FeedNavigator from "./FeedNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import NewListingButton from "./NewListingButton";
@@ -23,6 +24,7 @@ const AppNavigator = () => {
       if (!permission.granted) return;
   
       const token = await Notifications.getExpoPushTokenAsync();
+      expoPushTokensApi.register(token)
       console.log(token)
       
     } catch (error) {
