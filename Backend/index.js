@@ -12,11 +12,13 @@ const helmet = require("helmet");
 const compression = require("compression");
 const config = require("config");
 const app = express();
+const morgan = require('morgan')
 
 app.use(express.static("public"));
 app.use(express.json());
 app.use(helmet());
 app.use(compression());
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 app.use("/api/categories", categories);
 app.use("/api/listing", listing);
