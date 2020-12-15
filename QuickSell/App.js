@@ -20,7 +20,8 @@ export default function App() {
     setUser(user)
 
   }
-
+//https://expo.io/accounts/khushalt10/builds/8c5bbc2f-6224-40fe-bce1-2032f15b661d
+  //https://expo.io/@khushalt10/projects/QuickSell?release-channel=staging
   if( !isReady)
     return <AppLoading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
 

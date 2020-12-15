@@ -18,9 +18,14 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.khushalt10.quicksell",
+      "versionCode": 1
+    },
     "description": "A marketplace for selling the stuff you don't need anymore.",
     "notification": {
-      "isoDisplayInForeground": true
+      "iosDisplayInForeground": true
     }
   }
 }
+
